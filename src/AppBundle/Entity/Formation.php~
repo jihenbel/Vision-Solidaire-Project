@@ -189,38 +189,4 @@ class Formation
     {
         return $this->module;
     }
-
-    /**
-     * Add promotion
-     *
-     * @param \AppBundle\Entity\Promotion $promotion
-     *
-     * @return Formation
-     */
-    public function addPromotion(\AppBundle\Entity\Promotion $promotion)
-    {
-        $this->promotion[] = $promotion;
-
-        return $this;
-    }
-
-    /**
-     * Remove promotion
-     *
-     * @param \AppBundle\Entity\Promotion $promotion
-     */
-    public function removePromotion(\AppBundle\Entity\Promotion $promotion)
-    {
-        $this->promotion->removeElement($promotion);
-    }
-
-    /**
-     * Get promotion
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPromotion()
-    {
-        return $this->promotion;
-    }
 }
