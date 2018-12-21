@@ -981,305 +981,507 @@
     <table id="247" parent="10" name="formation">
       <Collation>utf8_unicode_ci</Collation>
     </table>
-    <table id="248" parent="10" name="module">
+    <table id="248" parent="10" name="formation_module">
       <Collation>utf8_unicode_ci</Collation>
     </table>
-    <table id="249" parent="10" name="promotion">
+    <table id="249" parent="10" name="formation_promotion">
       <Collation>utf8_unicode_ci</Collation>
     </table>
-    <table id="250" parent="10" name="utilisateur">
+    <table id="250" parent="10" name="formation_utilisateur">
       <Collation>utf8_unicode_ci</Collation>
     </table>
-    <table id="251" parent="10" name="utilisateur_evenement">
+    <table id="251" parent="10" name="module">
       <Collation>utf8_unicode_ci</Collation>
     </table>
-    <column id="252" parent="245" name="id">
+    <table id="252" parent="10" name="promotion">
+      <Collation>utf8_unicode_ci</Collation>
+    </table>
+    <table id="253" parent="10" name="utilisateur">
+      <Collation>utf8_unicode_ci</Collation>
+    </table>
+    <table id="254" parent="10" name="utilisateur_evenement">
+      <Collation>utf8_unicode_ci</Collation>
+    </table>
+    <table id="255" parent="10" name="utilisateur_formation">
+      <Collation>utf8_unicode_ci</Collation>
+    </table>
+    <column id="256" parent="245" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="253" parent="245" name="titre">
+    <column id="257" parent="245" name="titre">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="254" parent="245" name="description">
+    <column id="258" parent="245" name="description">
       <Position>3</Position>
       <DataType>longtext|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="255" parent="245" name="photo">
+    <column id="259" parent="245" name="photo">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="256" parent="245" name="UNIQ_B26681E14B78418">
+    <column id="260" parent="245" name="module_id">
+      <Position>5</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="261" parent="245" name="UNIQ_B26681E14B78418">
       <ColNames>photo</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="257" parent="245" name="PRIMARY">
+    <index id="262" parent="245" name="IDX_B26681EAFC2B591">
+      <ColNames>module_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="263" parent="245" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="258" parent="245" name="UNIQ_B26681E14B78418">
+    <key id="264" parent="245" name="UNIQ_B26681E14B78418">
       <ColNames>photo</ColNames>
       <UnderlyingIndexName>UNIQ_B26681E14B78418</UnderlyingIndexName>
     </key>
-    <column id="259" parent="246" name="evenement_id">
+    <foreign-key id="265" parent="245" name="FK_B26681EAFC2B591">
+      <ColNames>module_id</ColNames>
+      <RefSchemaName>visionsolidaire</RefSchemaName>
+      <RefTableName>module</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="266" parent="246" name="evenement_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="246" name="utilisateur_id">
+    <column id="267" parent="246" name="utilisateur_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="261" parent="246" name="IDX_8C897598FD02F13">
+    <index id="268" parent="246" name="IDX_8C897598FD02F13">
       <ColNames>evenement_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="262" parent="246" name="IDX_8C897598FB88E14F">
+    <index id="269" parent="246" name="IDX_8C897598FB88E14F">
       <ColNames>utilisateur_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="263" parent="246" name="PRIMARY">
+    <key id="270" parent="246" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>evenement_id
 utilisateur_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="264" parent="246" name="FK_8C897598FD02F13">
+    <foreign-key id="271" parent="246" name="FK_8C897598FD02F13">
       <ColNames>evenement_id</ColNames>
       <RefSchemaName>visionsolidaire</RefSchemaName>
       <RefTableName>evenement</RefTableName>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="265" parent="246" name="FK_8C897598FB88E14F">
+    <foreign-key id="272" parent="246" name="FK_8C897598FB88E14F">
       <ColNames>utilisateur_id</ColNames>
       <RefSchemaName>visionsolidaire</RefSchemaName>
       <RefTableName>utilisateur</RefTableName>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="266" parent="247" name="id">
+    <column id="273" parent="247" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="267" parent="247" name="libelle">
+    <column id="274" parent="247" name="libelle">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="268" parent="247" name="description">
+    <column id="275" parent="247" name="description">
       <Position>3</Position>
       <DataType>longtext|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="269" parent="247" name="PRIMARY">
+    <key id="276" parent="247" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="270" parent="248" name="id">
+    <column id="277" parent="248" name="formation_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="278" parent="248" name="module_id">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="279" parent="248" name="IDX_2C3D28055200282E">
+      <ColNames>formation_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="280" parent="248" name="IDX_2C3D2805AFC2B591">
+      <ColNames>module_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="281" parent="248" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>formation_id
+module_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="282" parent="248" name="FK_2C3D28055200282E">
+      <ColNames>formation_id</ColNames>
+      <RefSchemaName>visionsolidaire</RefSchemaName>
+      <RefTableName>formation</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="283" parent="248" name="FK_2C3D2805AFC2B591">
+      <ColNames>module_id</ColNames>
+      <RefSchemaName>visionsolidaire</RefSchemaName>
+      <RefTableName>module</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="284" parent="249" name="formation_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="285" parent="249" name="promotion_id">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="286" parent="249" name="IDX_B602D0C5200282E">
+      <ColNames>formation_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="287" parent="249" name="IDX_B602D0C139DF194">
+      <ColNames>promotion_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="288" parent="249" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>formation_id
+promotion_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="289" parent="249" name="FK_B602D0C5200282E">
+      <ColNames>formation_id</ColNames>
+      <RefSchemaName>visionsolidaire</RefSchemaName>
+      <RefTableName>formation</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="290" parent="249" name="FK_B602D0C139DF194">
+      <ColNames>promotion_id</ColNames>
+      <RefSchemaName>visionsolidaire</RefSchemaName>
+      <RefTableName>promotion</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="291" parent="250" name="formation_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="292" parent="250" name="utilisateur_id">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="293" parent="250" name="IDX_42E143685200282E">
+      <ColNames>formation_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="294" parent="250" name="IDX_42E14368FB88E14F">
+      <ColNames>utilisateur_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="295" parent="250" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>formation_id
+utilisateur_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="296" parent="250" name="FK_42E143685200282E">
+      <ColNames>formation_id</ColNames>
+      <RefSchemaName>visionsolidaire</RefSchemaName>
+      <RefTableName>formation</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="297" parent="250" name="FK_42E14368FB88E14F">
+      <ColNames>utilisateur_id</ColNames>
+      <RefSchemaName>visionsolidaire</RefSchemaName>
+      <RefTableName>utilisateur</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="298" parent="251" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="271" parent="248" name="libelle">
+    <column id="299" parent="251" name="libelle">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="272" parent="248" name="description">
+    <column id="300" parent="251" name="description">
       <Position>3</Position>
       <DataType>longtext|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="273" parent="248" name="PRIMARY">
+    <key id="301" parent="251" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="274" parent="249" name="id">
+    <column id="302" parent="252" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="275" parent="249" name="date_debut">
+    <column id="303" parent="252" name="date_debut">
       <Position>2</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="276" parent="249" name="date_fin">
+    <column id="304" parent="252" name="date_fin">
       <Position>3</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="277" parent="249" name="UNIQ_C11D7DD152EBEEF5">
+    <index id="305" parent="252" name="UNIQ_C11D7DD152EBEEF5">
       <ColNames>date_debut</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="278" parent="249" name="UNIQ_C11D7DD11C22B544">
+    <index id="306" parent="252" name="UNIQ_C11D7DD11C22B544">
       <ColNames>date_fin</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="279" parent="249" name="PRIMARY">
+    <key id="307" parent="252" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="280" parent="249" name="UNIQ_C11D7DD152EBEEF5">
+    <key id="308" parent="252" name="UNIQ_C11D7DD152EBEEF5">
       <ColNames>date_debut</ColNames>
       <UnderlyingIndexName>UNIQ_C11D7DD152EBEEF5</UnderlyingIndexName>
     </key>
-    <key id="281" parent="249" name="UNIQ_C11D7DD11C22B544">
+    <key id="309" parent="252" name="UNIQ_C11D7DD11C22B544">
       <ColNames>date_fin</ColNames>
       <UnderlyingIndexName>UNIQ_C11D7DD11C22B544</UnderlyingIndexName>
     </key>
-    <column id="282" parent="250" name="id">
+    <column id="310" parent="253" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="283" parent="250" name="nom">
+    <column id="311" parent="253" name="nom">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="284" parent="250" name="prenom">
+    <column id="312" parent="253" name="prenom">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="285" parent="250" name="adresse_mail">
+    <column id="313" parent="253" name="adresse_mail">
       <Position>4</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="286" parent="250" name="role">
+    <column id="314" parent="253" name="role">
       <Position>5</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="287" parent="250" name="date_naissance">
+    <column id="315" parent="253" name="date_naissance">
       <Position>6</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="288" parent="250" name="cin">
+    <column id="316" parent="253" name="cin">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="289" parent="250" name="specialite">
+    <column id="317" parent="253" name="specialite">
       <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="290" parent="250" name="photo">
+    <column id="318" parent="253" name="photo">
       <Position>9</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="291" parent="250" name="mot_passe">
+    <column id="319" parent="253" name="mot_passe">
       <Position>10</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="292" parent="250" name="UNIQ_1D1C63B3ABE530DA">
+    <column id="320" parent="253" name="promotion_id">
+      <Position>11</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="321" parent="253" name="UNIQ_1D1C63B3ABE530DA">
       <ColNames>cin</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="293" parent="250" name="UNIQ_1D1C63B314B78418">
+    <index id="322" parent="253" name="UNIQ_1D1C63B314B78418">
       <ColNames>photo</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="294" parent="250" name="PRIMARY">
+    <index id="323" parent="253" name="IDX_1D1C63B3139DF194">
+      <ColNames>promotion_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="324" parent="253" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="295" parent="250" name="UNIQ_1D1C63B3ABE530DA">
+    <key id="325" parent="253" name="UNIQ_1D1C63B3ABE530DA">
       <ColNames>cin</ColNames>
       <UnderlyingIndexName>UNIQ_1D1C63B3ABE530DA</UnderlyingIndexName>
     </key>
-    <key id="296" parent="250" name="UNIQ_1D1C63B314B78418">
+    <key id="326" parent="253" name="UNIQ_1D1C63B314B78418">
       <ColNames>photo</ColNames>
       <UnderlyingIndexName>UNIQ_1D1C63B314B78418</UnderlyingIndexName>
     </key>
-    <column id="297" parent="251" name="utilisateur_id">
+    <foreign-key id="327" parent="253" name="FK_1D1C63B3139DF194">
+      <ColNames>promotion_id</ColNames>
+      <RefSchemaName>visionsolidaire</RefSchemaName>
+      <RefTableName>promotion</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="328" parent="254" name="utilisateur_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="298" parent="251" name="evenement_id">
+    <column id="329" parent="254" name="evenement_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="299" parent="251" name="IDX_6B889D32FB88E14F">
+    <index id="330" parent="254" name="IDX_6B889D32FB88E14F">
       <ColNames>utilisateur_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="300" parent="251" name="IDX_6B889D32FD02F13">
+    <index id="331" parent="254" name="IDX_6B889D32FD02F13">
       <ColNames>evenement_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="301" parent="251" name="PRIMARY">
+    <key id="332" parent="254" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>utilisateur_id
 evenement_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="302" parent="251" name="FK_6B889D32FB88E14F">
+    <foreign-key id="333" parent="254" name="FK_6B889D32FB88E14F">
       <ColNames>utilisateur_id</ColNames>
       <RefSchemaName>visionsolidaire</RefSchemaName>
       <RefTableName>utilisateur</RefTableName>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="303" parent="251" name="FK_6B889D32FD02F13">
+    <foreign-key id="334" parent="254" name="FK_6B889D32FD02F13">
       <ColNames>evenement_id</ColNames>
       <RefSchemaName>visionsolidaire</RefSchemaName>
       <RefTableName>evenement</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="335" parent="255" name="utilisateur_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="336" parent="255" name="formation_id">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="337" parent="255" name="IDX_20EED493FB88E14F">
+      <ColNames>utilisateur_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="338" parent="255" name="IDX_20EED4935200282E">
+      <ColNames>formation_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="339" parent="255" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>utilisateur_id
+formation_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="340" parent="255" name="FK_20EED493FB88E14F">
+      <ColNames>utilisateur_id</ColNames>
+      <RefSchemaName>visionsolidaire</RefSchemaName>
+      <RefTableName>utilisateur</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="341" parent="255" name="FK_20EED4935200282E">
+      <ColNames>formation_id</ColNames>
+      <RefSchemaName>visionsolidaire</RefSchemaName>
+      <RefTableName>formation</RefTableName>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
