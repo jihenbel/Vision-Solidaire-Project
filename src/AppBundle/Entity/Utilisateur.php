@@ -73,7 +73,7 @@ class Utilisateur
     /**
      * @var string
      *
-     * @ORM\Column(name="photo", type="string", length=255, unique=true, nullable=true)
+     * @ORM\Column(name="photo", type="string", length=255, unique=true)
      */
     private $photo;
 
@@ -83,28 +83,6 @@ class Utilisateur
      * @ORM\Column(name="mot_passe", type="string", length=255)
      */
     private $motPasse;
-
-
-    /**
-     * @var
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Evenement")
-     */
-    private $participate;
-
-
-    /**
-     * @var
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Formation")
-     */
-
-    private $benefit;
-
-
-    /**
-     * @var
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Promotion")
-     */
-    private $promotion;
 
 
     /**
@@ -332,104 +310,5 @@ class Utilisateur
     {
         return $this->motPasse;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->participate = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add participate
-     *
-     * @param \AppBundle\Entity\Evenement $participate
-     *
-     * @return Utilisateur
-     */
-    public function addParticipate(\AppBundle\Entity\Evenement $participate)
-    {
-        $this->participate[] = $participate;
-
-        return $this;
-    }
-
-    /**
-     * Remove participate
-     *
-     * @param \AppBundle\Entity\Evenement $participate
-     */
-    public function removeParticipate(\AppBundle\Entity\Evenement $participate)
-    {
-        $this->participate->removeElement($participate);
-    }
-
-    /**
-     * Get participate
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getParticipate()
-    {
-        return $this->participate;
-    }
-
-    /**
-     * Add benefit
-     *
-     * @param \AppBundle\Entity\Formation $benefit
-     *
-     * @return Utilisateur
-     */
-    public function addBenefit(\AppBundle\Entity\Formation $benefit)
-    {
-        $this->benefit[] = $benefit;
-
-        return $this;
-    }
-
-    /**
-     * Remove benefit
-     *
-     * @param \AppBundle\Entity\Formation $benefit
-     */
-    public function removeBenefit(\AppBundle\Entity\Formation $benefit)
-    {
-        $this->benefit->removeElement($benefit);
-    }
-
-    /**
-     * Get benefit
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getBenefit()
-    {
-        return $this->benefit;
-    }
-
-
-    /**
-     * Set promotion
-     *
-     * @param \AppBundle\Entity\Promotion $promotion
-     *
-     * @return Utilisateur
-     */
-    public function setPromotion(\AppBundle\Entity\Promotion $promotion = null)
-    {
-        $this->promotion = $promotion;
-
-        return $this;
-    }
-
-    /**
-     * Get promotion
-     *
-     * @return \AppBundle\Entity\Promotion
-     */
-    public function getPromotion()
-    {
-        return $this->promotion;
-    }
 }
+
