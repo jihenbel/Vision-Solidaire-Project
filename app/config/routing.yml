@@ -1,15 +1,18 @@
+app_promotion:
+    resource: "@AppBundle/Controller/PromotionController.php"
+    type:     annotation
+
+app_user:
+    resource: "@AppBundle/Controller/UserController.php"
+    type:     annotation
+
+app_module:
+    resource: "@AppBundle/Controller/ModuleController.php"
+    type:     annotation
+
 # app/config/routing.yml
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
-
-admin_area:
-    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
-    prefix: /admin
-
-_sonata_admin:
-    resource: .
-    type: sonata_admin
-    prefix: /admin
