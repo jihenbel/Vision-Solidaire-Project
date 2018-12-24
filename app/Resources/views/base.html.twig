@@ -28,6 +28,10 @@
 
     </head>
     <body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
+    <div class="pace  pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+            <div class="pace-progress-inner"></div>
+        </div>
+        <div class="pace-activity"></div></div>
 
         <!-- fixed-top-->
         <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-dark navbar-shadow">
@@ -1296,11 +1300,17 @@
             </div>
         </div>
 
-        <div class="app-content content" style="padding-top: 100px;">
+        <div class="app-content content" style="padding-top: 80px;">
+            <div class="content-wrapper">
+                <div class="content-header row">
+                </div>
+                <div class="content-body">
 
             {% block body %}
-                hello
+
             {% endblock %}
+                </div>
+            </div>
         </div>
         <!-- ////////////////////////////////////////////////////////////////////////////-->
 

@@ -13,7 +13,7 @@ class FormationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('libelle')->add('description')->add('assurate')->add('module')->add('promotion');
+        $builder->add('libelle')->add('description');
     }/**
      * {@inheritdoc}
      */
