@@ -38,7 +38,7 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     form_themes:
-        - 'bootstrap_4_layout.html.twig'
+        - 'bootstrap_3_layout.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -79,8 +79,8 @@ fos_user:
     firewall_name: main
     user_class: AppBundle\Entity\User
     from_email:
-        address: "%mailer_user%"
-        sender_name: "%sender_name%"
+        address: "belabed@gmail.com"
+        sender_name: "belabed@gmail.com"
     registration:
         confirmation:
                 enabled: true

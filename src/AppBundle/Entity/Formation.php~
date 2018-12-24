@@ -29,6 +29,27 @@ class Formation
     private $libelle;
 
     /**
+     * @var
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Utilisateur")
+     */
+    private $assurate;
+
+
+    /**
+     * @var
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Module")
+     */
+    private $module;
+
+
+    /**
+     * @var
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Promotion")
+     */
+    private $promotion;
+
+
+    /**
      * @var string
      *
      * @ORM\Column(name="description", type="text")
@@ -94,4 +115,3 @@ class Formation
         return $this->description;
     }
 }
-
