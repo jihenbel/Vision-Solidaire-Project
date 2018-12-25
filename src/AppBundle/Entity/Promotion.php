@@ -22,6 +22,29 @@ class Promotion
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="designation", type="string", length=50)
+     */
+    private $designation;
+
+    /**
+     * @return string
+     */
+    public function getDesignation()
+    {
+        return $this->designation;
+    }
+
+    /**
+     * @param string $designation
+     */
+    public function setDesignation($designation)
+    {
+        $this->designation = $designation;
+    }
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_debut", type="date", unique=true)

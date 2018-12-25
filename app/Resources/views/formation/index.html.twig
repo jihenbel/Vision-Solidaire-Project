@@ -1,43 +1,31 @@
-{% extends 'base.html.twig' %}
+{% extends 'index.html.twig' %}
 
 {% block title %}Liste des formations{% endblock %}
 
-{% block body %}
-    <h1>Formations list</h1>
+{% block titleList %}Liste des formations {% endblock %}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Libelle</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for formation in formations %}
-            <tr>
-                <td><a href="{{ path('formation_show', { 'id': formation.id }) }}">{{ formation.id }}</a></td>
-                <td>{{ formation.libelle }}</td>
-                <td>{{ formation.description }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('formation_show', { 'id': formation.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('formation_edit', { 'id': formation.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('formation_new') }}">Create a new formation</a>
-        </li>
-    </ul>
+{% block headTable %}
+<th scope="col">Id</th>
+<th scope="col">Libelle</th>
+<th scope="col">Description</th>
+<th scope="col">Actions</th>
 {% endblock %}
+
+{% block bodyTable %}
+{% for formation in formations %}
+    <tr>
+        <th scope="row"><a href="{{ path('formation_show', { 'id': formation.id }) }}">{{ formation.id }}</a></th>
+        <td>{{ formation.libelle }}</td>
+        <td>{{ formation.description }}</td>
+        <td>
+            <div class="btn-group btn-group-toggle">
+                    <a href="{{ path('formation_show', { 'id': formation.id }) }}" class="btn btn-light ">Voir</a>
+
+                    <a href="{{ path('formation_edit', { 'id': formation.id }) }}" class="btn btn-light">Modifier</a>
+            </div>
+        </td>
+    </tr>
+{% endfor %}
+{% endblock %}
+
+{% block add %}<a href="{{ path('formation_new') }}" class="btn btn-dark">Créer une nouvelle formation</a>{% endblock %}

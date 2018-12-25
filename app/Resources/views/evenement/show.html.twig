@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Evenement</h1>
+    <h1>Evènement</h1>
 
     <table>
         <tbody>
@@ -26,14 +26,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('evenement_index') }}">Back to the list</a>
+            <a href="{{ path('evenement_index') }}">Retour à la liste</a>
         </li>
         <li>
-            <a href="{{ path('evenement_edit', { 'id': evenement.id }) }}">Edit</a>
+            <a href="{{ path('evenement_edit', { 'id': evenement.id }) }}">Modifier</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Supprimer">
             {{ form_end(delete_form) }}
         </li>
     </ul>

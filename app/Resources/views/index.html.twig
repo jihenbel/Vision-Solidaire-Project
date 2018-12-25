@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des formations{% endblock %}
+
+{% block body %}
+    <h1>{% block titleList %}Liste des formations {% endblock %}</h1>
+
+    <table class="table table-striped table-dark">
+        <thead>
+        <tr>
+            {% block headTable %}
+
+            {% endblock %}
+        </tr>
+        </thead>
+        <tbody>
+        {% block bodyTable %}
+
+        {% endblock %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            {% block add %}<a href="{{ path('formation_new') }}" class="btn btn-dark">Créer une nouvelle formation</a>{% endblock %}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,43 +1,32 @@
-{% extends 'base.html.twig' %}
+{% extends 'index.html.twig' %}
 
-{% block body %}
-    <h1>Evenements list</h1>
+{% block title %}Liste des évènements{% endblock %}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Description</th>
-                <th>Photo</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for evenement in evenements %}
-            <tr>
-                <td><a href="{{ path('evenement_show', { 'id': evenement.id }) }}">{{ evenement.id }}</a></td>
-                <td>{{ evenement.titre }}</td>
-                <td>{{ evenement.description }}</td>
-                <td>{{ evenement.photo }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('evenement_show', { 'id': evenement.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('evenement_edit', { 'id': evenement.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+{% block titleList %}Liste des évènements {% endblock %}
 
-    <ul>
-        <li>
-            <a href="{{ path('evenement_new') }}">Create a new evenement</a>
-        </li>
-    </ul>
+{% block headTable %}
+    <th>Id</th>
+    <th>Titre</th>
+    <th>Description</th>
+    <th>Photo</th>
+    <th>Actions</th>
 {% endblock %}
+
+{% block bodyTable %}
+    {% for evenement in evenements %}
+        <tr>
+            <td><a href="{{ path('evenement_show', { 'id': evenement.id }) }}">{{ evenement.id }}</a></td>
+            <td>{{ evenement.titre }}</td>
+            <td>{{ evenement.description }}</td>
+            <td>{{ evenement.photo }}</td>
+            <td>
+                <div class="btn-group btn-group-toggle">
+                    <a href="{{ path('evenement_show', { 'id': evenement.id }) }}" class="btn btn-light">Voir</a>
+                    <a href="{{ path('evenement_edit', { 'id': evenement.id }) }}" class="btn btn-light">Modifier</a>
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block add %}<a href="{{ path('evenement_new') }}" class="btn btn-dark">Créer un nouvel évènement</a>{% endblock %}

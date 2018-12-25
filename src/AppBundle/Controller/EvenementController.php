@@ -12,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  *
  * @Route("evenement")
  */
+
 class EvenementController extends Controller
 {
     /**
