@@ -18,7 +18,7 @@ class DefaultController extends Controller
     {
        // $logger->info($utilsService->getRandomString(10));
         // replace this example code with whatever you need
-        $utilsService->envoieMail('bjr', 'awatefhamrit09@gmail.com','test');
+        $utilsService->envoieMail('bjr', 'wadii.jlassi@gmail.com','test');
 
 
         return $this->render('default/index.html.twig', [

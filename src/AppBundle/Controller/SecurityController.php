@@ -38,7 +38,8 @@ class SecurityController extends Controller
            return $this->render('@App/Security/admin_home.html.twig');
        } else if ($authChecker->isGranted('ROLE_USER')){
            return $this->render('@App/Security/user_home.html.twig');
-       }else {
+       }
+         else {
            return $this->render('@FOSUser/Security/login.html.twig');
        }
     }
