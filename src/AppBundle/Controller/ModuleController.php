@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Module controller.
  *
- * @Route("module")
+ * @Route("/admin/module")
  */
 class ModuleController extends Controller
 {

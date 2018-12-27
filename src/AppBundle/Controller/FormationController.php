@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Formation controller.
  *
- * @Route("/formation")
+ * @Route("/admin/formation")
  */
 class FormationController extends Controller
 {

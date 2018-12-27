@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * User controller.
  *
- * @Route("user")
+ * @Route("/admin/user")
  */
 class UserController extends Controller
 {

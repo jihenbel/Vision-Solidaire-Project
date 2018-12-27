@@ -273,14 +273,18 @@
             <div class="main-menu-content">
                 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                     <li class=" nav-item"><a href="index-2.html"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">Dashboard</span><span class="badge badge badge-info badge-pill float-right mr-2">3</span></a>
+                       {% if is_granted('ROLE_ADMIN') %}
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="dashboard-ecommerce.html" data-i18n="nav.dash.ecommerce">eCommerce</a>
+                            <li><a class="menu-item" href="{{ path('user_index') }}" data-i18n="nav.dash.ecommerce">Liste des etudiants</a>
                             </li>
-                            <li><a class="menu-item" href="dashboard-crypto.html" data-i18n="nav.dash.crypto">Crypto</a>
+                            <li><a class="menu-item" href="{{ path('formation_index') }}" data-i18n="nav.dash.crypto">Liste des formations</a>
                             </li>
-                            <li class="active"><a class="menu-item" href="dashboard-sales.html" data-i18n="nav.dash.sales">Sales</a>
+                            <li class="active"><a class="menu-item" href="{{ path('module_index') }}" data-i18n="nav.dash.sales">Liste des modules</a>
+                            </li>
+                            <li class="active"><a class="menu-item" href="{{ path('evenement_index') }}" data-i18n="nav.dash.sales">Liste des evenements</a>
                             </li>
                         </ul>
+                        {% endif %}
                     </li>
                     <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title" data-i18n="nav.templates.main">Templates</span></a>
                         <ul class="menu-content">
@@ -308,9 +312,24 @@
                             </li>
                         </ul>
                     </li>
-                    <li class=" navigation-header"><span data-i18n="nav.category.admin-panels">Admin Panels</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="Admin Panels"></i>
+
+                    <li class=" navigation-header"><span data-i18n="nav.category.admin-panels">Admin Panels</span><i
+                                class="la la-ellipsis-h ft-minus" data-toggle="tooltip" data-placement="right"
+                                data-original-title="Admin Panels"></i>
                     </li>
-                    <li class=" nav-item"><a href="https://pixinvent.com/modern-admin-clean-bootstrap-4-dashboard-html-template/html/ltr/ecommerce-menu-template"><i class="la la-shopping-cart"></i><span class="menu-title" data-i18n="">eCommerce</span></a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <ul class="menu-content">
+                            <li><a class="menu-item" href="{{ path('user_index') }}" data-i18n="nav.dash.ecommerce">Liste des etudiants</a>
+                            </li>
+                            <li><a class="menu-item" href="{{ path('formation_index') }}" data-i18n="nav.dash.crypto">Liste des formations</a>
+                            </li>
+                            <li class="active"><a class="menu-item" href="{{ path('module_index') }}" data-i18n="nav.dash.sales">Liste des modules</a>
+                            </li>
+                            <li class="active"><a class="menu-item" href="{{ path('evenement_index') }}" data-i18n="nav.dash.sales">Liste des evenements</a>
+                            </li>
+                        </ul>
+                    {% endif %}
+                    <li class=" nav-item"><a  href="{{ path('user_index') }}"><i class="la la-shopping-cart"></i><span class="menu-title" data-i18n="">Liste des étudiants</span></a>
                     </li>
                     <li class=" nav-item"><a href="https://pixinvent.com/modern-admin-clean-bootstrap-4-dashboard-html-template/html/ltr/travel-menu-template"><i class="la la-plane"></i><span class="menu-title" data-i18n="">Travel &amp; Booking</span></a>
                     </li>
@@ -790,22 +809,21 @@
                         </ul>
                     </li>
                     <li class=" nav-item"><a href="#"><i class="la la-fire"></i><span class="menu-title" data-i18n="nav.advance_cards.main">Advance Cards</span></a>
-                        <ul class="menu-content">
-                            <li><a class="menu-item" href="card-statistics.html" data-i18n="nav.cards.card_statistics">Statistics</a>
-                            </li>
-                            <li><a class="menu-item" href="card-weather.html" data-i18n="nav.cards.card_weather">Weather</a>
-                            </li>
-                            <li><a class="menu-item" href="card-charts.html" data-i18n="nav.cards.card_charts">Charts</a>
-                            </li>
-                            <li><a class="menu-item" href="card-interactive.html" data-i18n="nav.cards.card_interactive">Interactive</a>
-                            </li>
-                            <li><a class="menu-item" href="card-maps.html" data-i18n="nav.cards.card_maps">Maps</a>
-                            </li>
-                            <li><a class="menu-item" href="card-social.html" data-i18n="nav.cards.card_social">Social</a>
-                            </li>
-                            <li><a class="menu-item" href="card-ecommerce.html" data-i18n="nav.cards.card_ecommerce">E-Commerce</a>
-                            </li>
-                        </ul>
+
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <ul class="menu-content">
+                                <li><a class="menu-item" href="{{ path('user_index') }}" data-i18n="nav.dash.ecommerce">Liste des etudiants</a>
+                                </li>
+                                <li><a class="menu-item" href="{{ path('formation_index') }}" data-i18n="nav.dash.crypto">Liste des formations</a>
+                                </li>
+                                <li class="active"><a class="menu-item" href="{{ path('module_index') }}" data-i18n="nav.dash.sales">Liste des modules</a>
+                                </li>
+                                <li class="active"><a class="menu-item" href="{{ path('evenement_index') }}" data-i18n="nav.dash.sales">Liste des evenements</a>
+                                </li>
+                            </ul>
+                        {% endif %}
+
+
                     </li>
                     <li class=" nav-item"><a href="#"><i class="la la-compass"></i><span class="menu-title" data-i18n="nav.content.main">Content</span></a>
                         <ul class="menu-content">

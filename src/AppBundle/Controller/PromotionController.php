@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Promotion controller.
  *
- * @Route("promotion")
+ * @Route("/admin/promotion")
  */
 class PromotionController extends Controller
 {

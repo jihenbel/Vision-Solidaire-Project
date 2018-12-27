@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class SecurityController extends Controller
 {
     /**
-     * @Route("/adduser")
+     * @Route("/admin/adduser")
      */
     public function addAction()
     {
