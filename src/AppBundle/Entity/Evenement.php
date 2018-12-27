@@ -55,6 +55,12 @@ class Evenement
      */
     private $module;
 
+    /**
+     * @var
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="evenement", cascade={"remove"})
+     */
+    private $images;
+
 
     /**
      * Get id
@@ -138,6 +144,7 @@ class Evenement
         return $this->photo;
     }
 
+
     /**
      * Constructor
      */
@@ -204,4 +211,21 @@ class Evenement
     {
         return $this->module;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * @param mixed $images
+     */
+    public function setImages($images)
+    {
+        $this->images = $images;
+    }
+
 }

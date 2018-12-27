@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Evenement;
+use AppBundle\Entity\Image;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -49,6 +50,22 @@ class EvenementController extends Controller
             $em->persist($evenement);
             $em->flush();
 
+            if ($_FILES["img"]['name']) {
+                $size = sizeof($_FILES['img']['name']);
+                for ($i = 0; $i < $size; $i++) {
+                    $type = substr($_FILES['img']['type'][$i],6);
+                    $_FILES['img']['name'][$i] = uniqid().".".$type;
+                    $image = new Image();
+                    $image->setEvenement($evenement);
+                    $image->setNom( $_FILES['img']['name'][$i]);
+                    $em->persist($image);
+                    $em->flush();
+                }
+
+                $this->upload($_FILES["img"]);
+
+            }
+
             return $this->redirectToRoute('evenement_show', array('id' => $evenement->getId()));
         }
 
@@ -56,6 +73,15 @@ class EvenementController extends Controller
             'evenement' => $evenement,
             'form' => $form->createView(),
         ));
+    }
+    function upload($images)
+    {
+        $size = sizeof($images['name']);
+        for ($i = 0; $i < $size; $i++) {
+            $name = $images['name'][$i];
+            $path = $this->get('kernel')->getProjectDir()."/web/uploads/images/" . basename($name);
+            move_uploaded_file($images['tmp_name'][$i], $path);
+        }
     }
 
     /**
@@ -132,6 +158,6 @@ class EvenementController extends Controller
             ->setAction($this->generateUrl('evenement_delete', array('id' => $evenement->getId())))
             ->setMethod('DELETE')
             ->getForm()
-        ;
+            ;
     }
 }
