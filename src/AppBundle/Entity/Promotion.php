@@ -28,21 +28,6 @@ class Promotion
      */
     private $designation;
 
-    /**
-     * @return string
-     */
-    public function getDesignation()
-    {
-        return $this->designation;
-    }
-
-    /**
-     * @param string $designation
-     */
-    public function setDesignation($designation)
-    {
-        $this->designation = $designation;
-    }
 
     /**
      * @var \DateTime
@@ -68,6 +53,23 @@ class Promotion
     {
         return $this->id;
     }
+
+    /**
+     * @return string
+     */
+    public function getDesignation()
+    {
+        return $this->designation;
+    }
+
+    /**
+     * @param string $designation
+     */
+    public function setDesignation($designation)
+    {
+        $this->designation = $designation;
+    }
+
 
     /**
      * Set dateDebut

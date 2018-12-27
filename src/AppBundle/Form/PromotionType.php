@@ -15,8 +15,12 @@ class PromotionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('designation', TextType::class)->add('dateDebut', DateType::class)->add('dateFin', DateType::class);
-    }/**
+        $builder->add('designation', TextType::class)
+                ->add('dateDebut', DateType::class)
+                ->add('dateFin', DateType::class);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)

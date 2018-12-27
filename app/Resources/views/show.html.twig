@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="content-body">
+    <div class="row" style="background-color: #fff">
+        <div class="col-sm-12">
+    <table id="table_id" class="dataTable table table-striped table-bordered" style="border-bottom: 0px">
+
+        <thead>
+        <tr>
+            {% block headTable %}
+
+            {% endblock %}
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            {% block bodyTable %}
+
+            {% endblock %}
+
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

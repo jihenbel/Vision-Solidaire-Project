@@ -2,30 +2,49 @@
 
 {% block title %}Liste des formations{% endblock %}
 
-{% block titleList %}Liste des formations {% endblock %}
 
-{% block headTable %}
-<th scope="col">Id</th>
-<th scope="col">Libelle</th>
-<th scope="col">Description</th>
-<th scope="col">Actions</th>
+{% block body %}
+
+    {% if formations|length >0 %}
+        {% block titleList %}Liste des formations {% endblock %}
+        {% block table %}
+            {% block headTable %}
+                <th scope="col">Id</th>
+                <th scope="col">Libelle</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
+            {% endblock %}
+
+            {% block bodyTable %}
+                {% for formation in formations %}
+                    <tr>
+                        <th scope="row"><a
+                                    href="{{ path('formation_show', { 'id': formation.id }) }}">{{ formation.id }}</a>
+                        </th>
+                        <td>{{ formation.libelle }}</td>
+                        <td>{{ formation.description }}</td>
+                        <td>
+                            <div class="btn-group btn-group-toggle">
+                                <a href="{{ path('formation_show', { 'id': formation.id }) }}"
+                                   class="btn btn-light ">Voir</a>
+
+                                <a href="{{ path('formation_edit', { 'id': formation.id }) }}" class="btn btn-light">Modifier</a>
+
+                                <a href="{{ path('formation_delete', { 'id': formation.id }) }}" class="btn btn-light">Supprimer</a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endblock %}
+
+        {% endblock %}
+
+    {% else %}
+        <h3 class="card-title">Y'a pas de formations</h3>
+    {% endif %}
+
+
+
+    {% block add %}<a href="{{ path('formation_new') }}" class="btn btn-dark" style=" margin: 20px 0;">Créer une
+        nouvelle formation</a>{% endblock %}
 {% endblock %}
-
-{% block bodyTable %}
-{% for formation in formations %}
-    <tr>
-        <th scope="row"><a href="{{ path('formation_show', { 'id': formation.id }) }}">{{ formation.id }}</a></th>
-        <td>{{ formation.libelle }}</td>
-        <td>{{ formation.description }}</td>
-        <td>
-            <div class="btn-group btn-group-toggle">
-                    <a href="{{ path('formation_show', { 'id': formation.id }) }}" class="btn btn-light ">Voir</a>
-
-                    <a href="{{ path('formation_edit', { 'id': formation.id }) }}" class="btn btn-light">Modifier</a>
-            </div>
-        </td>
-    </tr>
-{% endfor %}
-{% endblock %}
-
-{% block add %}<a href="{{ path('formation_new') }}" class="btn btn-dark">Créer une nouvelle formation</a>{% endblock %}

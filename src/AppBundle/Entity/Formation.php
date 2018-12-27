@@ -30,21 +30,21 @@ class Formation
 
     /**
      * @var
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User", cascade={"remove"})
      */
     private $assurate;
 
 
     /**
      * @var
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Module")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Module", cascade={"remove"})
      */
     private $module;
 
 
     /**
      * @var
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Promotion")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Promotion", cascade={"remove"})
      */
     private $promotion;
 
@@ -55,6 +55,29 @@ class Formation
      * @ORM\Column(name="description", type="text")
      */
     private $description;
+
+
+    /**
+     * @var boolean
+     * @ORM\Column(options={"default":true})
+     */
+    private $isActive;
+
+    /**
+     * @return bool
+     */
+    public function isActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param bool $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+    }
 
 
     /**

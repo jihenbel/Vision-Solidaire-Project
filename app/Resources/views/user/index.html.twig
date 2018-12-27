@@ -2,25 +2,37 @@
 
 {% block title %}Liste des utilisateurs{% endblock %}
 
-{% block titleList %}Liste des utilisateurs{% endblock %}
+{% block body %}
 
-{% block headTable %}
-    <th>Id</th>
-    <th>Actions</th>
-{% endblock %}
+    {% if users|length >0 %}
 
-{% block bodyTable %}
-    {% for user in users %}
-        <tr>
-            <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
-            <td>
-                <div class="btn-group btn-group-toggle">
-                        <a href="{{ path('user_show', { 'id': user.id }) }}" class="btn btn-light">Voir</a>
-                        <a href="{{ path('user_edit', { 'id': user.id }) }}" class="btn btn-light">Modifier</a>
-                </div>
-            </td>
-        </tr>
-    {% endfor %}
+        {% block titleList %}Liste des utilisateurs{% endblock %}
+
+        {% block headTable %}
+            <th>Id</th>
+            <th>Username</th>
+            <th>Actions</th>
+        {% endblock %}
+
+        {% block bodyTable %}
+            {% for user in users %}
+                <tr>
+                    <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
+                    <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.username }}</a></td>
+                    <td>
+                        <div class="btn-group btn-group-toggle">
+                            <a href="{{ path('user_show', { 'id': user.id }) }}" class="btn btn-light">Voir</a>
+                            <a href="{{ path('user_edit', { 'id': user.id }) }}" class="btn btn-light">Modifier</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endblock %}
+
+    {% else %}
+        <h3 class="card-title">Y'a pas des utilisateurs</h3>
+    {% endif %}
+
 {% endblock %}
 
 {% block add %}<a href="{{ path('user_new') }}" class="btn btn-dark">Créer un nouveau utilisateur</a>{% endblock %}

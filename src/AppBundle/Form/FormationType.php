@@ -24,15 +24,18 @@ class FormationType extends AbstractType
                 ->add('assurate', EntityType::class, array(
                     'class'=>User::class,
                     'choice_label'=>'username',
-                    'label'=>'Assurée par'
+                    'label'=>'Assurée par',
+                    'multiple'=>true
                 ))
                 ->add('module', EntityType::class, array(
                     'class'=>Module::class,
-                    'choice_label'=>'libelle'
+                    'choice_label'=>'libelle',
+                    'multiple'=>true
                 ))
                 ->add('promotion', EntityType::class, array(
                     'class'=>Promotion::class,
-                    'choice_label'=>'designation'
+                    'choice_label'=>'designation',
+                    'multiple'=>true
                 ) )
                 ;
     }/**

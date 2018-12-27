@@ -20,6 +20,7 @@
             <link rel="stylesheet" type="text/css" href="{{ asset('vendors/css/charts/morris.css') }}">
             <link rel="stylesheet" type="text/css" href="{{ asset('fonts/simple-line-icons/style.css') }}">
             <link rel="stylesheet" type="text/css" href="{{ asset('css/core/colors/palette-gradient.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css') }}">
             <!-- END Page Level CSS-->
             <!-- BEGIN Custom CSS-->
             <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
@@ -1307,12 +1308,14 @@
             <div class="content-wrapper">
                 <div class="content-header row">
                 </div>
-                <div class="content-body">
+                <div class="content-body" style="background-color: #fff; height: 80vh; padding: 20px; overflow : auto">
+                    <div class="row">
+                        <div class="col-sm-12">
 
             {% block body %}
 
             {% endblock %}
-                </div>
+                        </div></div></div>
             </div>
         </div>
         <!-- ////////////////////////////////////////////////////////////////////////////-->
@@ -1636,6 +1639,12 @@
             <!-- END MODERN JS-->
             <!-- BEGIN PAGE LEVEL JS-->
             <script src="{{ asset('js/scripts/pages/dashboard-sales.js') }}"></script>
+            <script type="text/javascript" charset="utf8" src="{{ asset('https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js') }}"></script>
+            <script type="text/javascript">
+                $(document).ready( function () {
+                    $('#table_id').DataTable();
+                } );
+            </script>
             <!-- END PAGE LEVEL JS-->
         {% endblock %}
 

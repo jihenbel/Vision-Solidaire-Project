@@ -42,13 +42,20 @@ class PromotionController extends Controller
         $promotion = new Promotion();
         $form = $this->createForm('AppBundle\Form\PromotionType', $promotion);
         $form->handleRequest($request);
+        $session = $request->getSession();
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($promotion);
-            $em->flush();
+            $dateDebut = $promotion->getDateDebut();
+            $dateFin = $promotion->getDateFin();
+            if ($dateFin > $dateDebut) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($promotion);
+                $em->flush();
 
-            return $this->redirectToRoute('promotion_show', array('id' => $promotion->getId()));
+                return $this->redirectToRoute('promotion_show', array('id' => $promotion->getId()));
+            } else {
+                $session->getFlashBag()->add('error', 'La date fin doit être supérieure à celle de début');
+            }
         }
 
         return $this->render('promotion/new.html.twig', array(

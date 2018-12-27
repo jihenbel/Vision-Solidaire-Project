@@ -2,6 +2,7 @@
 
 {% block title %}Liste des évènements{% endblock %}
 
+{% if evenements|length > 0 %}
 {% block titleList %}Liste des évènements {% endblock %}
 
 {% block headTable %}
@@ -28,5 +29,7 @@
         </tr>
     {% endfor %}
 {% endblock %}
+
+{% endif %}
 
 {% block add %}<a href="{{ path('evenement_new') }}" class="btn btn-dark">Créer un nouvel évènement</a>{% endblock %}

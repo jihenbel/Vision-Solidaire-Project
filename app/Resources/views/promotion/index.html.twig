@@ -2,31 +2,43 @@
 
 {% block title %}Liste des promotions{% endblock %}
 
-{% block titleList %}Liste des promotions{% endblock %}
+{% block body %}
+    {% if promotions|length >0 %}
 
-{% block headTable %}
-    <th>Id</th>
-    <th>Désignation</th>
-    <th>Datedebut</th>
-    <th>Datefin</th>
-    <th>Actions</th>
-{% endblock %}
+        {% block titleList %}Liste des promotions{% endblock %}
 
-{% block bodyTable %}
-        {% for promotion in promotions %}
-            <tr>
-                <td><a href="{{ path('promotion_show', { 'id': promotion.id }) }}">{{ promotion.id }}</a></td>
-                <td>{{ promotion.designation }}</td>
-                <td>{% if promotion.dateDebut %}{{ promotion.dateDebut|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if promotion.dateFin %}{{ promotion.dateFin|date('Y-m-d') }}{% endif %}</td>
-                <td>
-                    <div class="btn-group btn-group-toggle">
-                        <a href="{{ path('promotion_show', { 'id': promotion.id }) }}" class="btn btn-light">Voir</a>
-                        <a href="{{ path('promotion_edit', { 'id': promotion.id }) }}" class="btn btn-light">Modifier</a>
-                    </div>
-                </td>
-            </tr>
-        {% endfor %}
+        {% block headTable %}
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                aria-label="designation: activate to sort column ascending" style="width: 130px;">Id
+            </th>
+            <th>Désignation</th>
+            <th>Datedebut</th>
+            <th>Datefin</th>
+            <th>Actions</th>
+        {% endblock %}
+
+        {% block bodyTable %}
+            {% for promotion in promotions %}
+                <tr>
+                    <td><a href="{{ path('promotion_show', { 'id': promotion.id }) }}">{{ promotion.id }}</a></td>
+                    <td>{{ promotion.designation }}</td>
+                    <td>{% if promotion.dateDebut %}{{ promotion.dateDebut|date('Y-m-d') }}{% endif %}</td>
+                    <td>{% if promotion.dateFin %}{{ promotion.dateFin|date('Y-m-d') }}{% endif %}</td>
+                    <td>
+                        <div class="btn-group btn-group-toggle">
+                            <a href="{{ path('promotion_show', { 'id': promotion.id }) }}"
+                               class="btn btn-light">Voir</a>
+                            <a href="{{ path('promotion_edit', { 'id': promotion.id }) }}"
+                               class="btn btn-light">Modifier</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endblock %}
+    {% else %}
+        <h3 class="card-title">Y'a pas de promotions</h3>
+    {% endif %}
+
 {% endblock %}
 
 {% block add %}<a href="{{ path('promotion_new') }}" class="btn btn-dark">Créer une nouvelle promotion</a>{% endblock %}

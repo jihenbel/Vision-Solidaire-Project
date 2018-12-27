@@ -1,19 +1,20 @@
-{% extends 'base.html.twig' %}
+{% extends 'show.html.twig' %}
 
 {% block title %}Utilisateur{% endblock %}
 
 {% block body %}
-    <h1>Utilisateur</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <h2 class="card-title">Utilisateur</h2>
 
+    {% block headTable %}
+        <th>Id</th>
+        <th>Username</th>
+    {% endblock %}
+    <td>{{ user.id }}</td>
+    <td>{{ user.username }}</td>
+    {% block bodyTable %}
+
+    {% endblock %}
     <ul>
         <li>
             <a href="{{ path('user_index') }}">Retour à la liste</a>

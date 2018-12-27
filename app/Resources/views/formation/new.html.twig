@@ -3,12 +3,11 @@
 {% block title %}Créer une formation{% endblock %}
 
 {% block body %}
-    <h1>Créer une formation</h1>
-
-    {{ form_start(form) }}
+    <h2>Créer une formation</h2>
+        {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Créer" />
-    {{ form_end(form) }}
+        <input type="submit" value="Créer"/>
+        {{ form_end(form) }}
 
     <ul>
         <li>

@@ -25,7 +25,7 @@ class FormationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $formations = $em->getRepository('AppBundle:Formation')->findAll();
+        $formations = $em->getRepository('AppBundle:Formation')->findBy(array('isActive'=>true));
 
         return $this->render('formation/index.html.twig', array(
             'formations' => $formations,
@@ -102,19 +102,23 @@ class FormationController extends Controller
     /**
      * Deletes a formation entity.
      *
-     * @Route("/{id}", name="formation_delete")
+     * @Route("/{id}/delete", name="formation_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Formation $formation)
     {
-        $form = $this->createDeleteForm($formation);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($formation) {
+            $formation->setIsActive(false);
             $em = $this->getDoctrine()->getManager();
-            $em->remove($formation);
+            $em->persist($formation);
             $em->flush();
         }
+        /*$form = $this->createDeleteForm($formation);
+        $form->handleRequest($request);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($formation);
+            $em->flush();*/
 
         return $this->redirectToRoute('formation_index');
     }
