@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\loginDetail;
 use AppBundle\Service\UtilsService;
 use Psr\Log\Test\LoggerInterfaceTest;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -25,6 +26,8 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
+
+
 
 
 }

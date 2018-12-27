@@ -1,0 +1,72 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * loginDetail
+ *
+ * @ORM\Table(name="login_detail")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\loginDetailRepository")
+ */
+class loginDetail
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="derniereAvtivite", type="date")
+     */
+    private $derniereAvtivite;
+
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set derniereAvtivite.
+     *
+     * @param \DateTime $derniereAvtivite
+     *
+     * @return loginDetail
+     */
+    public function setDerniereAvtivite($derniereAvtivite)
+    {
+        $this->derniereAvtivite = $derniereAvtivite;
+
+        return $this;
+    }
+
+    /**
+     * Get derniereAvtivite.
+     *
+     * @return \DateTime
+     */
+    public function getDerniereAvtivite()
+    {
+        return $this->derniereAvtivite;
+    }
+
+    /**
+     * @var
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     */
+    private $user;
+
+}

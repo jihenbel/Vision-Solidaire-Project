@@ -1,0 +1,24 @@
+<table>
+
+    {% for  user in  users %}
+        {#{{ status = '' }}#}
+        {#{{ current_timestamp = strtotime(date('Y-m-d H:i:s')-10) }}#}
+        {#{{ current_timestamp = date('Y-m-d H:i:s', current_timestamp) }}#}
+
+        {#//last= fetch_user_last_activity($row[id_user], $connect)#}
+        {#if (last>currenttimestamp) => status= online#}
+        {#else => offline#}
+        {##}
+
+
+
+        <tr>
+
+            <td>{{ user.username }}</td>
+            {#//neb3ath l id m3 l button# ++++ j doi afficher l status }#}
+            <td><button type="button" class="btn btn-info btn-xs start_chat" hidden="'.{{ user.id }}.'">Envoie de msg</button>   </td>
+        </tr>
+
+    {% endfor %}
+
+</table>

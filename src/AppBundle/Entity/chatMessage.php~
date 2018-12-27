@@ -1,0 +1,110 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * chatMessage
+ *
+ * @ORM\Table(name="chat_message")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\chatMessageRepository")
+ */
+class chatMessage
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="chatMsg", type="string", length=255)
+     */
+    private $chatMsg;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="timestamp", type="string", length=255)
+     */
+    private $timestamp;
+
+    /**
+     * @var
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     */
+    private $toUserId;
+
+    /**
+     * @var
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     */
+    private $fromUserAdd;
+
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set chatMsg.
+     *
+     * @param string $chatMsg
+     *
+     * @return chatMessage
+     */
+    public function setChatMsg($chatMsg)
+    {
+        $this->chatMsg = $chatMsg;
+
+        return $this;
+    }
+
+    /**
+     * Get chatMsg.
+     *
+     * @return string
+     */
+    public function getChatMsg()
+    {
+        return $this->chatMsg;
+    }
+
+    /**
+     * Set timestamp.
+     *
+     * @param string $timestamp
+     *
+     * @return chatMessage
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->timestamp = $timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Get timestamp.
+     *
+     * @return string
+     */
+    public function getTimestamp()
+    {
+        return $this->timestamp;
+    }
+
+
+}

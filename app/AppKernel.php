@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+//            new FOS\MessageBundle\FOSMessageBundle(),
 //            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
 //
 //            // Then add SonataAdminBundle
@@ -63,4 +64,5 @@ class AppKernel extends Kernel
         });
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
     }
+
 }
