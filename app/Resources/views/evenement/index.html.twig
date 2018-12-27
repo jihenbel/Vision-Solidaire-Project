@@ -24,6 +24,12 @@
                 {% endfor %}
             </td>
             <td>
+
+                {{ evenement.photo }}
+
+
+            </td>
+            <td>
                 <div class="btn-group btn-group-toggle">
                     <a href="{{ path('evenement_show', { 'id': evenement.id }) }}" class="btn btn-light">Voir</a>
                     <a href="{{ path('evenement_edit', { 'id': evenement.id }) }}" class="btn btn-light">Modifier</a>
