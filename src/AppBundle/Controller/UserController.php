@@ -24,7 +24,8 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $users = $em->getRepository('AppBundle:User')->findAll();
+        $users =$em->getRepository(User::class)->findAll();
+            //$em->getRepository('AppBundle:User')->findBy(array('isActive'=>true));
 
         return $this->render('user/index.html.twig', array(
             'users' => $users,
@@ -40,7 +41,8 @@ class UserController extends Controller
     public function newAction(Request $request)
     {
         $user = new User();
-        $form = $this->createForm('AppBundle\Form\UserType', $user);
+        $user->setIsActive(true);
+        $form = $this->createForm('fos_user_registration', $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -101,17 +103,14 @@ class UserController extends Controller
     /**
      * Deletes a user entity.
      *
-     * @Route("/{id}", name="user_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="user_delete")
      */
     public function deleteAction(Request $request, User $user)
     {
-        $form = $this->createDeleteForm($user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($user) {
+            $user->setIsActive(false);
             $em = $this->getDoctrine()->getManager();
-            $em->remove($user);
+            $em->persist($user);
             $em->flush();
         }
 

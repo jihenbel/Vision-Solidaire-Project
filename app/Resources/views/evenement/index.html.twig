@@ -9,7 +9,7 @@
     <th>Id</th>
     <th>Titre</th>
     <th>Description</th>
-    <th>Photo</th>
+    <th>Photo(s)</th>
     <th>Actions</th>
 {% endblock %}
 
@@ -20,19 +20,18 @@
             <td>{{ evenement.titre }}</td>
             <td>{{ evenement.description }}</td>
             <td>{% for image in evenement.images %}
-                 <img src="{{ asset('uploads/images/') }}{{ image.nom }}" style="width:100px; height:100px;">
+                 <div style="border: 2px solid #dee2e6; border-radius: 5px; text-align: center; padding: 5px 0; display: flex;justify-content: space-evenly;align-items: center; margin-bottom: 3px">
+                     <img src="{{ asset('uploads/images/') }}{{ image.nom }}" style="width:100px; height:100px;">
+                     <a href="{{ path('image_delete', { 'id': image.id }) }}" class="btn btn-light"><i class="far fa-trash-alt fa-2x"></i></a>
+                 </div>
                 {% endfor %}
-            </td>
-            <td>
-
-                {{ evenement.photo }}
-
-
             </td>
             <td>
                 <div class="btn-group btn-group-toggle">
                     <a href="{{ path('evenement_show', { 'id': evenement.id }) }}" class="btn btn-light">Voir</a>
                     <a href="{{ path('evenement_edit', { 'id': evenement.id }) }}" class="btn btn-light">Modifier</a>
+                    <a href="{{ path('evenement_delete', { 'id': evenement.id }) }}" class="btn btn-light">Supprimer</a>
+
                 </div>
             </td>
         </tr>

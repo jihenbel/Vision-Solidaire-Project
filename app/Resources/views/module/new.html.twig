@@ -3,16 +3,16 @@
 {% block title %}Créer un module{% endblock %}
 
 {% block body %}
-    <h1>Créer un module</h1>
+<h3 class="card-title">Créer un module</h3>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Créer" />
+        <input class="btn btn-dark" style="margin: 15px 40px" type="submit" value="Créer" />
     {{ form_end(form) }}
 
     <ul>
         <li>
-            <a href="{{ path('module_index') }}">Retour à la liste</a>
+            <a href="{{ path('module_index') }}" class="btn btn-dark">Retour à la liste</a>
         </li>
     </ul>
 {% endblock %}

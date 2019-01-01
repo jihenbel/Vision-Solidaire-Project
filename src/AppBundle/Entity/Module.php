@@ -35,6 +35,27 @@ class Module
      */
     private $description;
 
+    /**
+     * @var boolean
+     * @ORM\Column(options={"default":true})
+     */
+    private $isActive;
+
+    /**
+     * @return bool
+     */
+    public function isActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param bool $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+    }
 
     /**
      * Get id
@@ -93,5 +114,8 @@ class Module
     {
         return $this->description;
     }
+
+
 }
+
 

@@ -42,12 +42,12 @@ class Evenement
      */
     private $photo;
 
-
-    /**
-     * @var
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User")
-     */
-    private $evaluate;
+//
+//    /**
+//     * @var
+//     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User")
+//     */
+//    private $evaluate;
 
     /**
      * @var
@@ -61,6 +61,28 @@ class Evenement
      */
     private $images;
 
+
+    /**
+     * @var boolean
+     * @ORM\Column(options={"default":true})
+     */
+    private $isActive;
+
+    /**
+     * @return bool
+     */
+    public function isActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param bool $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+    }
 
     /**
      * Get id
@@ -144,48 +166,48 @@ class Evenement
         return $this->photo;
     }
 
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->evaluate = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add evaluate
-     *
-     * @param \AppBundle\Entity\Utilisateur $evaluate
-     *
-     * @return Evenement
-     */
-    public function addEvaluate(\AppBundle\Entity\User $evaluate)
-    {
-        $this->evaluate[] = $evaluate;
-
-        return $this;
-    }
-
-    /**
-     * Remove evaluate
-     *
-     * @param \AppBundle\Entity\User $evaluate
-     */
-    public function removeEvaluate(\AppBundle\Entity\User $evaluate)
-    {
-        $this->evaluate->removeElement($evaluate);
-    }
-
-    /**
-     * Get evaluate
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getEvaluate()
-    {
-        return $this->evaluate;
-    }
+//
+//    /**
+//     * Constructor
+//     */
+//    public function __construct()
+//    {
+//        $this->evaluate = new \Doctrine\Common\Collections\ArrayCollection();
+//    }
+//
+//    /**
+//     * Add evaluate
+//     *
+//     * @param \AppBundle\Entity\Utilisateur $evaluate
+//     *
+//     * @return Evenement
+//     */
+//    public function addEvaluate(\AppBundle\Entity\User $evaluate)
+//    {
+//        $this->evaluate[] = $evaluate;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Remove evaluate
+//     *
+//     * @param \AppBundle\Entity\User $evaluate
+//     */
+//    public function removeEvaluate(\AppBundle\Entity\User $evaluate)
+//    {
+//        $this->evaluate->removeElement($evaluate);
+//    }
+//
+//    /**
+//     * Get evaluate
+//     *
+//     * @return \Doctrine\Common\Collections\Collection
+//     */
+//    public function getEvaluate()
+//    {
+//        return $this->evaluate;
+//    }
 
 
     /**

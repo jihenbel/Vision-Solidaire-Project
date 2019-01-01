@@ -1,3 +1,7 @@
+app_image:
+    resource: "@AppBundle/Controller/ImageController.php"
+    type:     annotation
+
 app_evenement:
     resource: "@AppBundle/Controller/EvenementController.php"
     type:     annotation

@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class SecurityController extends Controller
 {
     /**
-     * @Route("/admin/adduser")
+     * @Route("adduser")
      */
     public function addAction()
     {
@@ -20,7 +20,7 @@ class SecurityController extends Controller
         $user->setUsername('ali');
         $user->setRoles(array('ROLE_ADMIN'));
         $user->setEmail('ali@gmail.com');
-        $user->setPlainPassword('ali');
+        $user->setPlainPassword('0000');
         $user->setEnabled(true);
         $userManager->updateUser($user);
 

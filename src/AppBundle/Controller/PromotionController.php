@@ -24,7 +24,7 @@ class PromotionController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $promotions = $em->getRepository('AppBundle:Promotion')->findAll();
+        $promotions = $em->getRepository('AppBundle:Promotion')->findBy(array('isActive'=>true));
 
         return $this->render('promotion/index.html.twig', array(
             'promotions' => $promotions,
@@ -40,6 +40,7 @@ class PromotionController extends Controller
     public function newAction(Request $request)
     {
         $promotion = new Promotion();
+        $promotion->setIsActive(true);
         $form = $this->createForm('AppBundle\Form\PromotionType', $promotion);
         $form->handleRequest($request);
         $session = $request->getSession();
@@ -88,37 +89,32 @@ class PromotionController extends Controller
      */
     public function editAction(Request $request, Promotion $promotion)
     {
-        $deleteForm = $this->createDeleteForm($promotion);
         $editForm = $this->createForm('AppBundle\Form\PromotionType', $promotion);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('promotion_edit', array('id' => $promotion->getId()));
+            return $this->redirectToRoute('promotion_show', array('id' => $promotion->getId()));
         }
 
         return $this->render('promotion/edit.html.twig', array(
             'promotion' => $promotion,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
      * Deletes a promotion entity.
      *
-     * @Route("/{id}", name="promotion_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="promotion_delete")
      */
     public function deleteAction(Request $request, Promotion $promotion)
     {
-        $form = $this->createDeleteForm($promotion);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($promotion) {
+            $promotion->setIsActive(false);
             $em = $this->getDoctrine()->getManager();
-            $em->remove($promotion);
+            $em->persist($promotion);
             $em->flush();
         }
 

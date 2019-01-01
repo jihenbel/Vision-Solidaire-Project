@@ -41,10 +41,12 @@ class FormationController extends Controller
     public function newAction(Request $request)
     {
         $formation = new Formation();
+        $formation->setIsActive(true);
         $form = $this->createForm('AppBundle\Form\FormationType', $formation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($formation);
             $em->flush();
@@ -82,20 +84,18 @@ class FormationController extends Controller
      */
     public function editAction(Request $request, Formation $formation)
     {
-        $deleteForm = $this->createDeleteForm($formation);
         $editForm = $this->createForm('AppBundle\Form\FormationType', $formation);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('formation_edit', array('id' => $formation->getId()));
+            return $this->redirectToRoute('formation_show', array('id' => $formation->getId()));
         }
 
         return $this->render('formation/edit.html.twig', array(
             'formation' => $formation,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -103,7 +103,6 @@ class FormationController extends Controller
      * Deletes a formation entity.
      *
      * @Route("/{id}/delete", name="formation_delete")
-     * @Method("DELETE")
      */
     public function deleteAction(Request $request, Formation $formation)
     {

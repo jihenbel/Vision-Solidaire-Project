@@ -3,21 +3,16 @@
 {% block title %}Modifier un utilisateur{% endblock %}
 
 {% block body %}
-    <h1>Modifier un utilisateur</h1>
+    <h3 class="card-title">Modifier un utilisateur</h3>
 
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Modifier" />
+    {{ form_widget(edit_form) }}
+    <input class="btn btn-dark" style="margin: 15px 40px" type="submit" value="Modifier"/>
     {{ form_end(edit_form) }}
 
     <ul>
         <li>
-            <a href="{{ path('user_index') }}">Retour à la liste</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
-            {{ form_end(delete_form) }}
+            <a href="{{ path('user_index') }}" class="btn btn-dark">Retour à la liste</a>
         </li>
     </ul>
 {% endblock %}

@@ -24,7 +24,7 @@ class ModuleController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $modules = $em->getRepository('AppBundle:Module')->findAll();
+        $modules = $em->getRepository('AppBundle:Module')->findBy(array('isActive'=>true));
 
         return $this->render('module/index.html.twig', array(
             'modules' => $modules,
@@ -40,6 +40,7 @@ class ModuleController extends Controller
     public function newAction(Request $request)
     {
         $module = new Module();
+        $module->setIsActive(true);
         $form = $this->createForm('AppBundle\Form\ModuleType', $module);
         $form->handleRequest($request);
 
@@ -88,7 +89,7 @@ class ModuleController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('module_edit', array('id' => $module->getId()));
+            return $this->redirectToRoute('module_show', array('id' => $module->getId()));
         }
 
         return $this->render('module/edit.html.twig', array(
@@ -101,17 +102,14 @@ class ModuleController extends Controller
     /**
      * Deletes a module entity.
      *
-     * @Route("/{id}", name="module_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="module_delete")
      */
     public function deleteAction(Request $request, Module $module)
     {
-        $form = $this->createDeleteForm($module);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($module) {
+            $module->setIsActive(false);
             $em = $this->getDoctrine()->getManager();
-            $em->remove($module);
+            $em->persist($module);
             $em->flush();
         }
 

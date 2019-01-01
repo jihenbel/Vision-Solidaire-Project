@@ -2,7 +2,11 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Module;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,10 +17,15 @@ class EvenementType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('titre')
-                ->add('description')
-                ->add('evaluate')
-                ->add('module');
+        $builder->add('titre', TextType::class)
+                ->add('description', TextType::class)
+                ->add('module',EntityType::class, array(
+                    'class'=> Module::class,
+                    'choice_label'=> 'libelle',
+                    'attr'=>array(
+                        'class'=>'select2'
+                    )
+                ));
     }/**
      * {@inheritdoc}
      */

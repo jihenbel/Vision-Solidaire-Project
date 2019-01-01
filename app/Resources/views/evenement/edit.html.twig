@@ -1,21 +1,18 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Modifier un évènement{% endblock %}
+
 {% block body %}
-    <h1>Modifier l'évènement </h1>
+<h3 class="card-title">Modifier l'évènement </h3>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Modifier" />
+        <input class="btn btn-dark" style="margin: 15px 40px" type="submit" value="Valider" />
     {{ form_end(edit_form) }}
 
     <ul>
         <li>
-            <a href="{{ path('evenement_index') }}">Retour à la liste</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
-            {{ form_end(delete_form) }}
+            <a href="{{ path('evenement_index') }}" class="btn btn-dark">Retour à la liste</a>
         </li>
     </ul>
 {% endblock %}

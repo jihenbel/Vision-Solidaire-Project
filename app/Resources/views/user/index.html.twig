@@ -2,7 +2,6 @@
 
 {% block title %}Liste des utilisateurs{% endblock %}
 
-{% block body %}
 
     {% if users|length >0 %}
 
@@ -23,6 +22,7 @@
                         <div class="btn-group btn-group-toggle">
                             <a href="{{ path('user_show', { 'id': user.id }) }}" class="btn btn-light">Voir</a>
                             <a href="{{ path('user_edit', { 'id': user.id }) }}" class="btn btn-light">Modifier</a>
+                            <a href="{{ path('user_delete', { 'id': user.id }) }}" class="btn btn-light">Supprimer</a>
                         </div>
                     </td>
                 </tr>
@@ -30,9 +30,8 @@
         {% endblock %}
 
     {% else %}
-        <h3 class="card-title">Y'a pas des utilisateurs</h3>
+        {% block vide %}<h3 class="card-title">Y'a pas des utilisateurs</h3>{% endblock %}
     {% endif %}
 
-{% endblock %}
 
 {% block add %}<a href="{{ path('user_new') }}" class="btn btn-dark">Créer un nouveau utilisateur</a>{% endblock %}

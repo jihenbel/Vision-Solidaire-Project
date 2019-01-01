@@ -30,7 +30,7 @@ class Image
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Evenement")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Evenement",inversedBy="images")
      */
     private $evenement;
 

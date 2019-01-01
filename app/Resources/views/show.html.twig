@@ -1,27 +1,35 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{% endblock %}
+
 {% block body %}
-<div class="content-body">
-    <div class="row" style="background-color: #fff">
-        <div class="col-sm-12">
-    <table id="table_id" class="dataTable table table-striped table-bordered" style="border-bottom: 0px">
+    <h3 class="card-title">{% block titleList %} {% endblock %}</h3>
 
-        <thead>
-        <tr>
-            {% block headTable %}
+    {% block table %}
+        <table class="dataTable table table-striped table-bordered" style="border-bottom: 0px">
 
-            {% endblock %}
+            <thead>
+            <tr>
+                {% block headTable %}
+
+                {% endblock %}
+
+            </tr>
+            </thead>
+
+            <tbody style="text-align: center; line-height: 100px">
+
+                {% block bodyTable %}
+
+                {% endblock %}
 
 
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            {% block bodyTable %}
-
-            {% endblock %}
-
-        </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    {% endblock %}
+    <ul style="margin-top: 20px">
+        <li>
+            {% block add %}<br><a href="{{ path('formation_new') }}" class="btn btn-dark">Créer une nouvelle formation</a>{% endblock %}
+        </li>
+    </ul>
 {% endblock %}

@@ -2,30 +2,19 @@
 
 {% block title %}Utilisateur{% endblock %}
 
-{% block body %}
-
-    <h2 class="card-title">Utilisateur</h2>
-
-    {% block headTable %}
-        <th>Id</th>
-        <th>Username</th>
-    {% endblock %}
-    <td>{{ user.id }}</td>
-    <td>{{ user.username }}</td>
-    {% block bodyTable %}
-
-    {% endblock %}
-    <ul>
-        <li>
-            <a href="{{ path('user_index') }}">Retour à la liste</a>
-        </li>
-        <li>
-            <a href="{{ path('user_edit', { 'id': user.id }) }}">Modifier</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    {% block titleList %} Les détails de {{ user.username }} {% endblock %}
+=
+{% block headTable %}
+    <th>Id</th>
+    <th>Username</th>
 {% endblock %}
+
+{% block bodyTable %}
+    <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+    </tr>
+{% block bodyTable %}
+
+{% block add %}<a href="{{ path('user_index') }}" class="btn btn-dark">Retour à la liste</a>{% endblock %}
+

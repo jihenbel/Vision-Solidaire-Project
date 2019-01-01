@@ -1,40 +1,30 @@
-{% extends 'base.html.twig' %}
+{% extends 'show.html.twig' %}
 
-{% block body %}
-    <h1>Evènement</h1>
+{% block title %}Evènement{% endblock %}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ evenement.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ evenement.titre }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ evenement.description }}</td>
-            </tr>
-            <tr>
-                <th>Photo</th>
-                <td>{{ evenement.photo }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('evenement_index') }}">Retour à la liste</a>
-        </li>
-        <li>
-            <a href="{{ path('evenement_edit', { 'id': evenement.id }) }}">Modifier</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+{% block titleList %} Evènement {{ evenement.titre }} {% endblock %}
+
+{% block headTable %}
+    <th>Id</th>
+    <th>Titre</th>
+    <th>Description</th>
+    <th>Photo</th>
+
 {% endblock %}
+
+{% block bodyTable %}
+    <tr>
+        <td>{{ evenement.id }}</td>
+        <td>{{ evenement.titre }}</td>
+        <td>{{ evenement.description }}</td>
+        <td>{% for image in evenement.images %}
+                <div style="border: 2px solid #dee2e6; border-radius: 5px; text-align: center; padding: 5px 0; display: flex;justify-content: space-evenly;align-items: center; margin-bottom: 3px">
+                    <img src="{{ asset('uploads/images/') }}{{ image.nom }}" style="width:100px; height:100px;">
+                </div>
+            {% endfor %}</td>
+    </tr>
+{% endblock %}
+
+{% block add %}<a href="{{ path('evenement_index') }}" class="btn btn-dark">Retour à la liste</a>{% endblock %}
+

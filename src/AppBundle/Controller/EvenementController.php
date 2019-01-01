@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Evenement;
 use AppBundle\Entity\Image;
+use function MongoDB\Driver\Monitoring\removeSubscriber;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -26,7 +27,7 @@ class EvenementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $evenements = $em->getRepository('AppBundle:Evenement')->findAll();
+        $evenements = $em->getRepository('AppBundle:Evenement')->findBy(array('isActive'=>true));
 
         return $this->render('evenement/index.html.twig', array(
             'evenements' => $evenements,
@@ -42,10 +43,13 @@ class EvenementController extends Controller
     public function newAction(Request $request)
     {
         $evenement = new Evenement();
+        $evenement->setIsActive(true);
         $form = $this->createForm('AppBundle\Form\EvenementType', $evenement);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($evenement);
             $em->flush();
@@ -108,37 +112,32 @@ class EvenementController extends Controller
      */
     public function editAction(Request $request, Evenement $evenement)
     {
-        $deleteForm = $this->createDeleteForm($evenement);
         $editForm = $this->createForm('AppBundle\Form\EvenementType', $evenement);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('evenement_edit', array('id' => $evenement->getId()));
+            return $this->redirectToRoute('evenement_show', array('id' => $evenement->getId()));
         }
 
         return $this->render('evenement/edit.html.twig', array(
             'evenement' => $evenement,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
      * Deletes a evenement entity.
      *
-     * @Route("/{id}", name="evenement_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="evenement_delete")
      */
     public function deleteAction(Request $request, Evenement $evenement)
     {
-        $form = $this->createDeleteForm($evenement);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($evenement) {
+            $evenement->setIsActive(false);
             $em = $this->getDoctrine()->getManager();
-            $em->remove($evenement);
+            $em->persist($evenement);
             $em->flush();
         }
 

@@ -1,38 +1,22 @@
-{% extends 'base.html.twig' %}
+{% extends 'show.html.twig' %}
 
 {% block title %}Promotion{% endblock %}
 
-{% block body %}
-    <h1>Promotion</h1>
+{% block titleList %} Promotion {% endblock %}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ promotion.id }}</td>
-            </tr>
-            <tr>
-                <th>Datedebut</th>
-                <td>{% if promotion.dateDebut %}{{ promotion.dateDebut|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Datefin</th>
-                <td>{% if promotion.dateFin %}{{ promotion.dateFin|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('promotion_index') }}">Retour à la liste</a>
-        </li>
-        <li>
-            <a href="{{ path('promotion_edit', { 'id': promotion.id }) }}">Modifier</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+{% block headTable %}
+    <th>Id</th>
+    <th>Datedebut</th>
+    <th>Datefin</th>
 {% endblock %}
+
+{% block bodyTable %}
+    <tr>
+        <td>{{ promotion.id }}</td>
+        <td>{% if promotion.dateDebut %}{{ promotion.dateDebut|date('Y-m-d') }}{% endif %}</td>
+        <td>{% if promotion.dateFin %}{{ promotion.dateFin|date('Y-m-d') }}{% endif %}</td>
+    </tr>
+{% endblock %}
+
+{% block add %}<a href="{{ path('promotion_index') }}" class="btn btn-dark">Retour à la liste</a>{% endblock %}
+

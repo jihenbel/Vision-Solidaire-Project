@@ -1,38 +1,22 @@
-{% extends 'base.html.twig' %}
+{% extends 'show.html.twig' %}
 
 {% block title %}Formation{% endblock %}
 
-{% block body %}
-    <h1>Formation</h1>
+{% block titleList %} Formation {{ formation.libelle }} {% endblock %}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ formation.id }}</td>
-            </tr>
-            <tr>
-                <th>Libelle</th>
-                <td>{{ formation.libelle }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ formation.description }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('formation_index') }}">Retour à la liste</a>
-        </li>
-        <li>
-            <a href="{{ path('formation_edit', { 'id': formation.id }) }}">Modifier</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+{% block headTable %}
+    <th>Id</th>
+    <th>Libelle</th>
+    <th>Description</th>
 {% endblock %}
+
+{% block bodyTable %}
+    <tr>
+        <td>{{ formation.id }}</td>
+        <td>{{ formation.libelle }}</td>
+        <td>{{ formation.description }}</td>
+    </tr>
+{% endblock %}
+
+{% block add %}<a href="{{ path('formation_index') }}" class="btn btn-dark">Retour à la liste</a>{% endblock %}
+

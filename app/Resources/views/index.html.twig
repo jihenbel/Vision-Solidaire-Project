@@ -6,7 +6,7 @@
     <h3 class="card-title">{% block titleList %}Liste des formations {% endblock %}</h3>
 
     {% block table %}
-        <table id="table_id" class="dataTable table table-striped table-bordered" style="border-bottom: 0px">
+        <table id="table_id" class="dataTable table table-striped table-bordered" style="border-bottom: 0px; ">
             <thead>
             <tr>
                 {% block headTable %}
@@ -14,13 +14,14 @@
                 {% endblock %}
             </tr>
             </thead>
-            <tbody>
+            <tbody style="text-align: center; line-height: 100px">
             {% block bodyTable %}
 
             {% endblock %}
             </tbody>
         </table>
     {% endblock %}
+    {% block vide %}{% endblock %}
     <ul>
         <li>
             {% block add %}<br><a href="{{ path('formation_new') }}" class="btn btn-dark">Créer une nouvelle formation</a>{% endblock %}

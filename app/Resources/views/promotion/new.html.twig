@@ -3,7 +3,7 @@
 {% block title %}Créer une promotion{% endblock %}
 
 {% block body %}
-    <h1>Créer une promotion</h1>
+<h3 class="card-title">Créer une promotion</h3>
 
     {% for message in app.session.flashbag.get('error') %}
         <div class="alert alert-danger">
@@ -13,12 +13,12 @@
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Créer" />
+        <input class="btn btn-dark" style="margin: 15px 40px" type="submit" value="Créer" />
     {{ form_end(form) }}
 
     <ul>
         <li>
-            <a href="{{ path('promotion_index') }}">Retour à la liste</a>
+            <a href="{{ path('promotion_index') }}" class="btn btn-dark" >Retour à la liste</a>
         </li>
     </ul>
 {% endblock %}
